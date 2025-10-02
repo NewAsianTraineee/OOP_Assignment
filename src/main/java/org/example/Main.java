@@ -1,15 +1,34 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-
-        //Creating the Hero
-        Hero hero = new Hero("BigChonk",100,15,1);
-        Weapon sword = new Weapon("Basic Sword", 15);
+    public static void main(String[] args) {
+        Hero hero = new Hero("Kewin", 200, 12, 1);
+        Weapon sword = new Weapon("Iron Sword", 15);
         hero.setWeapon(sword);
-        hero.info();
 
+        Boss Drake = new Boss("Red Dragon",500,0,15,500,1000);
+        LowTierMonster goblin = new LowTierMonster("Goblin", 1000, 0, 1, 250, 250);
+
+        System.out.println("⚔️ Striden börjar mellan " + hero.getName() + " och " + goblin.getName() + "!");
+        System.out.println();
+
+        int round = 1;
+
+        while (hero.getHealth() > 0 && Drake.getHealth() > 0) {
+            System.out.println("🔁 Runda " + round);
+
+            hero.attack(Drake);
+            goblin.isDead();
+            if (Drake.getHealth() <= 0) break;
+
+            Drake.attack(hero);
+            hero.isDead();
+            System.out.println();
+
+            round++;
+        }
+
+        System.out.println("🏁 Striden är över!");
+        hero.info();
     }
 }

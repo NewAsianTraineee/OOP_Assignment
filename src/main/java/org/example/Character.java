@@ -1,11 +1,12 @@
 package org.example;
+
 public abstract class Character {
     private String name;
-    private int health;
     private int maxHp;
+    private int health;
     private int damage;
     private int level;
-    //Heroes + Monster
+
     public Character(String name, int maxHp, int damage, int level) {
         this.name = name;
         this.maxHp = maxHp;
@@ -14,22 +15,8 @@ public abstract class Character {
         this.level = level;
     }
 
-
-    public abstract void attack(Character target);
-    public abstract void takeDamage(int amount);
-
-    public abstract void isDead();
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
+    public String getName() {
+        return name;
     }
 
     public int getMaxHp() {
@@ -38,6 +25,14 @@ public abstract class Character {
 
     public void setMaxHp(int maxHp) {
         this.maxHp = maxHp;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = Math.max(0, health);
     }
 
     public int getDamage() {
@@ -56,11 +51,8 @@ public abstract class Character {
         this.level = level;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void info() {
-        System.out.println("|" + name + "" + "|HP: " + maxHp + "| Damage:" + damage + "| Level: " + level + "|");
-    }
+    public abstract void attack(Character target);
+    public abstract void takeDamage(int amount);
+    public abstract void isDead();
+    public abstract void info();
 }
