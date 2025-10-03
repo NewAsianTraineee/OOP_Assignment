@@ -1,7 +1,7 @@
 package org.example;
 
 import java.util.Random;
-
+// Fixa hero damage och gör inte den random då det ser helt knaigt ut!
 public class Hero extends Character {
     Random rand = new Random();
     protected Weapon weapon;
