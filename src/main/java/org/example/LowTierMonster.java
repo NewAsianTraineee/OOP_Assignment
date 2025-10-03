@@ -22,18 +22,6 @@ public class LowTierMonster extends Monster {
     }
 
     @Override
-    public void takeDamage(int amount) {
-        setHealth(getHealth() - amount);
-    }
-
-    @Override
-    public void isDead() {
-        if (getHealth() <= 0) {
-            System.out.println(getName() + " has died!");
-        }
-    }
-
-    @Override
     public void info() {
         System.out.println("[" + getName() + " | HP: " + getHealth() + " | Damage: " + getDamage() + "]");
     }
