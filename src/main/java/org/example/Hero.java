@@ -42,10 +42,10 @@ public class Hero extends Character {
         boolean dice = rand.nextInt(100)< 20;
         if(dice)
         {
-            System.out.println(getName() + " Critical hit! " + target.getName() + " for " + specialTotalDmg + " damage! [Goblin: " + target.getHealth() + "/" + target.getMaxHp() + "]");
+            System.out.println(getName() + " Critical hit! " + target.getName() + " for " + specialTotalDmg + " damage! [" + target.getName() + target.getHealth()+ "/" + target.getMaxHp() + "]");
             target.takeDamage(specialTotalDmg);
         }  else  {
-            System.out.println(getName() + " attacked " + target.getName() + " for " + totalDmg + " damage! [Goblin: " + target.getHealth() + "/" + target.getMaxHp() + "]");
+            System.out.println(getName() + " attacked " + target.getName() + " for " + totalDmg + " damage! ["+ target.getName() + " " + target.getHealth() + "/" + target.getMaxHp() + "]");
             target.takeDamage(totalDmg);
         }
 

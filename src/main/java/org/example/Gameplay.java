@@ -93,7 +93,7 @@ public class Gameplay {
 
 
         } else {
-            currentEnemy = new LowTierMonster("Goblin", 100, 0, 1, 250, 250); // Auto-Summon
+            currentEnemy = new LowTierMonster("Golbin", 100, 0, 1, 250, 250); // Auto-Summon
             System.out.println("A monster appears: " + currentEnemy.getName());
         }
 
