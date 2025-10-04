@@ -1,5 +1,7 @@
 package org.example;
 
+
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -51,7 +53,7 @@ public class Gameplay {
                 option2();
                 break;
             case 3:
-                //option3();
+                option3();
                 break;
             case 4:
                 option4();
@@ -128,12 +130,48 @@ public class Gameplay {
         System.out.println("Press ENTER to exit");
         sc.nextLine();
     }
-//
+// T
+    public void option3() throws InterruptedException {
+        System.out.println("You have entered Hephaestus workshop...");
+        Thread.sleep(2000);
+        System.out.println("=========================");
+        System.out.println("======= Hephaestus ======");
+        System.out.println("=========================");
+        System.out.println("========= Items =========");
+        Thread.sleep(2000);
+       List<Weapon> weaponList = List.of(
+               new Weapon("Iron Sword",25,500,2),
+               new Weapon("Diamond Sword",35,750,3),
+               new Weapon("Demon Sword",50,1000,5),
+               new Weapon("Demon Overlord Sword",75,1500,8),
+               new Weapon("Heavenly Demon Sword",115,2000,10)
+       );
+       for(int i = 0; i < weaponList.size(); i++){
+           Weapon weapon = weaponList.get(i);
+           System.out.println("[" + (i + 1) + "][" + weapon.getName() + "][Damage: " + weapon.getDamage() + "][Price: " + weapon.getPrice() + "Gold][Level req: " + weapon.getNeedLevel() + "]\n");
+       }
+       int choice = reader.readInt("1-5");
+       if(choice >= 1 && choice <= weaponList.size()){
+           Weapon select = weaponList.get(choice - 1);
+           Weapon selected = weaponList.get(choice - 1);
+           System.out.println("You chose: " + selected.getName());
+           Thread.sleep(1500);
+           System.out.println("Are you worthy?");
+           Thread.sleep(1500);
+           selected.purchase(hero);
+           Thread.sleep(2000);
+           System.out.println("You are now exiting the smithy");
+           Thread.sleep(2000);
+       } else {
+           System.out.println("Invalid choice.");
 
-    // Option 3
-    public void option3(){
-        
+       }
+
+        System.out.println("Press ENTER to exit");
+       sc.nextLine();
     }
+
+
     public void option4() throws InterruptedException {
             if(hero.getLevel() >= 10){
                 System.out.println("You have won the game!");
