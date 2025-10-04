@@ -128,7 +128,7 @@ public class Gameplay {
         System.out.println("Press ENTER to exit");
         sc.nextLine();
     }
-
+// The shop
     public void option3() throws InterruptedException {
         System.out.println("You have entered Hephaestus workshop...");
         System.out.println("=========================");
