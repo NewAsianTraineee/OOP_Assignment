@@ -51,7 +51,7 @@ public class Gameplay {
                 option2();
                 break;
             case 3:
-                option3();
+                //option3();
                 break;
             case 4:
                 option4();
@@ -128,113 +128,11 @@ public class Gameplay {
         System.out.println("Press ENTER to exit");
         sc.nextLine();
     }
-// The shop
-    public void option3() throws InterruptedException {
-        System.out.println("You have entered Hephaestus workshop...");
-        System.out.println("=========================");
-        System.out.println("======= Hephaestus ======");
-        System.out.println("=========================");
-        System.out.println("========= Items =========");
-        System.out.println("=== 1. Iron Sword [Damage: 25+][250 Gold] ======");
-        System.out.println("=== 2. Diamond Sword [Damage: 35+][500 Gold]====");
-        System.out.println("=== 3. Demon Sword [Damage: 50+][1500 Gold] ======");
-        System.out.println("=== 4. Heavenly Sword [Damage: 75+][2000 Gold] ===");
+//
 
-        //Fetch from input class
-        int choice = reader.readInt("Choose item");
-
-        switch (choice) {
-            case 1:
-                Weapon ironSword = new Weapon("Iron Sword", 25);
-
-                System.out.println("You chose Iron Sword");
-                Thread.sleep(1500);
-                System.out.println("Are you worthy?");
-                Thread.sleep(1500);
-                if (hero.getLevel() >= 2 && hero.getGold() >= 250) {
-                    System.out.println("You have proven your worth!");
-                    Thread.sleep(2000);
-                    System.out.println("You have bought Iron Sword");
-                    hero.setGold(hero.getGold() - 250);
-                    hero.setWeapon(ironSword);
-                    System.out.println("You equipped: " + ironSword.getName() + " (+" + ironSword.getDamage() + " damage)");
-                    System.out.println("You are now exiting the smithy");
-                    Thread.sleep(2000);
-                } else {
-                    System.out.println("You have proven not to be worthy\n");
-                    Thread.sleep(1500);
-                    System.out.println("Exiting the smithy...");
-                    return;
-
-                }
-                break;
-            case 2:
-                Weapon diamondSword = new Weapon("Diamond Sword", 35);
-
-                System.out.println("You chose Diamond Sword");
-                Thread.sleep(1500);
-                System.out.println("Are you worthy?");
-                Thread.sleep(1500);
-                if (hero.getLevel() >= 4 && hero.getGold() >= 500) {
-                    System.out.println("You have proven your worth!");
-                    Thread.sleep(2000);
-                    System.out.println("You have bought Diamond Sword");
-                    hero.setGold(hero.getGold() - 500);
-                    hero.setWeapon(diamondSword);
-                    System.out.println("You equipped: " + diamondSword.getName() + " (+" + diamondSword.getDamage() + " damage)");
-                    System.out.println("You are now exiting the smithy");
-                    Thread.sleep(2000);
-                } else {
-                    System.out.println("You have proven not to be worthy\n");
-                    Thread.sleep(1500);
-                    System.out.println("Exiting the smithy...");
-                }
-                break;
-            case 3:
-                Weapon demonSword = new Weapon("Demon Sword", 50);
-
-                System.out.println("You chose Demon Sword");
-                Thread.sleep(1500);
-                System.out.println("Are you worthy?");
-                Thread.sleep(1500);
-                if (hero.getLevel() >= 6 && hero.getGold() >= 1500) {
-                    System.out.println("You have proven your worth!");
-                    Thread.sleep(2000);
-                    System.out.println("You have bought Iron Sword");
-                    hero.setGold(hero.getGold() - 1500);
-                    hero.setWeapon(demonSword);
-                    System.out.println("You equipped: " + demonSword.getName() + " (+" + demonSword.getDamage() + " damage)");
-                    System.out.println("You are now exiting the smithy");
-                    Thread.sleep(2000);
-                } else {
-                    System.out.println("You have proven not to be worthy\n");
-                    Thread.sleep(1500);
-                    System.out.println("Exiting the smithy...");
-                }
-                break;
-            case 4:
-                Weapon heavenlySword = new Weapon("Heavenly Sword", 75);
-
-                System.out.println("You chose Heavenly Sword");
-                Thread.sleep(1500);
-                System.out.println("Are you worthy?");
-                Thread.sleep(1500);
-                if (hero.getLevel() >= 8 && hero.getGold() >= 2000) {
-                    System.out.println("You have proven your worth!");
-                    Thread.sleep(2000);
-                    System.out.println("You have bought Iron Sword");
-                    hero.setGold(hero.getGold() - 2000);
-                    hero.setWeapon(heavenlySword);
-                    System.out.println("You equipped: " + heavenlySword.getName() + " (+" + heavenlySword.getDamage() + " damage)");
-                    System.out.println("You are now exiting the smithy");
-                    Thread.sleep(2000);
-                } else {
-                    System.out.println("You have proven not to be worthy\n");
-                    Thread.sleep(1500);
-                    System.out.println("Exiting the smithy...");
-                }
-                break;
-        }
+    // Option 3
+    public void option3(){
+        
     }
     public void option4() throws InterruptedException {
             if(hero.getLevel() >= 10){
