@@ -26,6 +26,7 @@ public class Boss extends Monster {
         }
     }
 
+
     @Override
     public void info() {
         System.out.println("[" + getName() + " | HP: " + getHealth() + " | Damage: " + getDamage() + "]");

@@ -22,7 +22,7 @@ public abstract class Monster extends Character {
     public void takeDamage(int amount) {
         setHealth(getHealth() - amount);
     }
-
+// Fixa currentTarget
     @Override
     public void isDead() {
         if (getHealth() <= 0) {

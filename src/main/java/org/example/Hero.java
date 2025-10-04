@@ -1,13 +1,14 @@
 package org.example;
 
 import java.util.Random;
-// Fixa hero damage och gör inte den random då det ser helt knaigt ut!
+
+//Hero class
 public class Hero extends Character {
     Random rand = new Random();
     protected Weapon weapon;
     private int exp;
     private int gold;
-
+    // Constructor
     public Hero(String name, int maxHp, int damage, int level) {
         super(name, maxHp, damage, level);
         this.exp = 0;
@@ -17,7 +18,7 @@ public class Hero extends Character {
     public void gainExp(int amount) {
         exp += amount;
         System.out.println(getName() + " gained " + amount + "XP!" + " [Total EXP: " + exp + "]");
-        checkLevel();
+        checkLevel(); // Check if exp enough lvl up
     }
 
     public void gainGold(int amount) {
@@ -35,17 +36,17 @@ public class Hero extends Character {
 
     @Override
     public void attack(Character target) {
-        //
-        int basedmg = rand.nextInt(getDamage() + 4);
-        int specialTotalDmg = getDamage() + getWeapon().getDamage();
+
+        int totalDmg = getDamage() + getWeapon().getDamage();
+        int specialTotalDmg = totalDmg*2;
         boolean dice = rand.nextInt(100)< 20;
         if(dice)
         {
-            System.out.println(getName() + " SPECIAL attacked " + target.getName() + " for " + specialTotalDmg + " damage! [Goblin: " + target.getHealth() + "/" + target.getMaxHp() + "]");
+            System.out.println(getName() + " Critical hit! " + target.getName() + " for " + specialTotalDmg + " damage! [Goblin: " + target.getHealth() + "/" + target.getMaxHp() + "]");
             target.takeDamage(specialTotalDmg);
         }  else  {
-            System.out.println(getName() + " attacked " + target.getName() + " for " + basedmg + " damage! [Goblin: " + target.getHealth() + "/" + target.getMaxHp() + "]");
-            target.takeDamage(basedmg);
+            System.out.println(getName() + " attacked " + target.getName() + " for " + totalDmg + " damage! [Goblin: " + target.getHealth() + "/" + target.getMaxHp() + "]");
+            target.takeDamage(totalDmg);
         }
 
         if (target.getHealth() <= 0) {
@@ -56,13 +57,11 @@ public class Hero extends Character {
             }
         }
     }
-
     public void checkLevel() {
         while (exp >= getLevel() * 100) {
             exp -= getLevel() * 100;
             setLevel(getLevel() + 1);
 
-            // Direkt förstärkning per nivå
             setDamage(getDamage() + 12);
             setMaxHp(getMaxHp() + 25);
             setHealth(getMaxHp());
@@ -70,6 +69,14 @@ public class Hero extends Character {
 
             System.out.println(getName() + " has leveled up! [Level: " + getLevel() + "]");
         }
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public int getGold() {
+        return gold;
     }
 
     @Override
@@ -87,12 +94,11 @@ public class Hero extends Character {
     @Override
     public void info() {
 
-        int specialTotalDmg = getDamage() + weapon.getDamage();
         int needExp = getLevel() * 100;
 
         System.out.println("[" + getName() + "| HP: " + getHealth() + " | Damage: " +
                 getDamage() + " | Level: " + getLevel() + " | Weapon: " + weapon.getName() +
-                " (+" + weapon.getDamage() + ") | Exp: " + exp + " | Gold: " + gold +
+                " (+" + weapon.getDamage() + ") | Exp: " + exp + " | Gold: " + getGold() +
                 " | EXP: " + exp + "/" + needExp + "]");
     }
 }

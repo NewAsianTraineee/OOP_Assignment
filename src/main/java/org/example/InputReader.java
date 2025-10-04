@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class InputReader {
     private Scanner scanner;
+// Kort och gott snodde jag koden då jag kan endast förklara enkelt det är för input i menyn
+    //Tack Lars :D
 
     // Konstruktor som skapar en scanner för att läsa in från tangentbordet
     public InputReader() {
