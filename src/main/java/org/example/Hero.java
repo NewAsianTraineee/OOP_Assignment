@@ -41,7 +41,7 @@ public class Hero extends Character {
         int specialTotalDmg = totalDmg*2;
         boolean dice = rand.nextInt(100)< 20;
         if(dice)
-        {
+        {                   // Fixed encounter name
             System.out.println(getName() + " Critical hit! " + target.getName() + " for " + specialTotalDmg + " damage! [" + target.getName() + target.getHealth()+ "/" + target.getMaxHp() + "]");
             target.takeDamage(specialTotalDmg);
         }  else  {
