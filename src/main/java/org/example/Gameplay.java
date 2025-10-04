@@ -4,7 +4,7 @@ package org.example;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
+//The actual game mechanics
 public class Gameplay {
     Hero hero;
     LowTierMonster monster;
@@ -152,7 +152,7 @@ public class Gameplay {
        }
        int choice = reader.readInt("1-5");
        if(choice >= 1 && choice <= weaponList.size()){
-           Weapon select = weaponList.get(choice - 1);
+           Weapon select = weaponList.get(choice - 1); // Matching user input
            Weapon selected = weaponList.get(choice - 1);
            System.out.println("You chose: " + selected.getName());
            Thread.sleep(1500);

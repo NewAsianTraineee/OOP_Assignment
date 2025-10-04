@@ -1,5 +1,5 @@
 package org.example;
-
+// Monster Class abtract inheritance
 public abstract class Monster extends Character {
     private int expReward;
     private int goldReward;
