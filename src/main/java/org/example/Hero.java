@@ -42,7 +42,7 @@ public class Hero extends Character {
         boolean dice = rand.nextInt(100)< 20;
         if(dice)
         {                   // Fixed encounter name
-            System.out.println(getName() + " Critical hit! " + target.getName() + " for " + specialTotalDmg + " damage! [" + target.getName() + target.getHealth()+ "/" + target.getMaxHp() + "]");
+            System.out.println(getName() + " Critical hit! " + target.getName() + " for " + specialTotalDmg + " damage! [" + target.getName() + " " + target.getHealth()+ "/" + target.getMaxHp() + "]");
             target.takeDamage(specialTotalDmg);
         }  else  {
             System.out.println(getName() + " attacked " + target.getName() + " for " + totalDmg + " damage! ["+ target.getName() + " " + target.getHealth() + "/" + target.getMaxHp() + "]");
@@ -88,7 +88,9 @@ public class Hero extends Character {
     public void isDead() {
         if (getHealth() <= 0) {
             System.out.println(getName() + " has died!");
+            getMaxHp();
         }
+
     }
 
     @Override

@@ -1,16 +1,17 @@
 package org.example;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 //The actual game mechanics
 public class Gameplay {
     Hero hero;
-    LowTierMonster monster;
+
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
-    Boss boss;
+
 
     InputReader reader;
     boolean gameIsRunning;
@@ -73,7 +74,6 @@ public class Gameplay {
 
         boolean isBossFight = rand.nextInt(100) < 30;
         Character currentEnemy;
-
         boolean safeZone = rand.nextInt(100) < 10;
         if (safeZone) {
             System.out.println("You have entered a safe zone");
@@ -86,11 +86,13 @@ public class Gameplay {
             Thread.sleep(1500);
             System.out.println("You feel safe and start heading towards out");
             Thread.sleep(2000);
+            System.out.println("Returning to main MENU!\n");
+
             return;
         }
         // Boss battle encounter
         if (isBossFight) {
-            currentEnemy = new Boss("Red Dragon", 250, 0, 25, 500, 1000); // Auto-Summon
+            currentEnemy = new Boss("Red Dragon", 750, 0, 25, 500, 1000); // Auto-Summon
             System.out.println(" 💢 A wild BOSS appears: " + currentEnemy.getName() + " 💢");
 
 
@@ -114,7 +116,6 @@ public class Gameplay {
                 if (hero.getHealth() <= 0) {
                     gameIsRunning = false;
                 }
-                Thread.sleep(1500);
             } else {
                 break;
             }
@@ -139,21 +140,19 @@ public class Gameplay {
         System.out.println("=========================");
         System.out.println("========= Items =========");
         Thread.sleep(2000);
-       List<Weapon> weaponList = List.of(
-               new Weapon("Iron Sword",25,500,2),
-               new Weapon("Diamond Sword",35,750,3),
-               new Weapon("Demon Sword",50,1000,5),
-               new Weapon("Demon Overlord Sword",75,1500,8),
-               new Weapon("Heavenly Demon Sword",115,2000,10)
-       );
+       List<Weapon> weaponList = new ArrayList<>();
+       weaponList.add(new Weapon("Iron Sword",25,500,2));
+                weaponList.add(new Weapon("Diamond Sword",35,750,3));
+                weaponList.add(new Weapon("Demon Sword",50,1000,5));
+                weaponList.add(new Weapon("Demon Overlord Sword",75,1500,8));
+                weaponList.add(new Weapon("Heavenly Demon Sword",115,2000,10));
        for(int i = 0; i < weaponList.size(); i++){
            Weapon weapon = weaponList.get(i);
            System.out.println("[" + (i + 1) + "][" + weapon.getName() + "][Damage: " + weapon.getDamage() + "][Price: " + weapon.getPrice() + "Gold][Level req: " + weapon.getNeedLevel() + "]\n");
        }
        int choice = reader.readInt("1-5");
        if(choice >= 1 && choice <= weaponList.size()){
-           Weapon select = weaponList.get(choice - 1); // Matching user input
-           Weapon selected = weaponList.get(choice - 1);
+           Weapon selected = weaponList.get(choice - 1); //Match user index input
            System.out.println("You chose: " + selected.getName());
            Thread.sleep(1500);
            System.out.println("Are you worthy?");
