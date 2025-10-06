@@ -1,8 +1,7 @@
-package org.example;
+package org.example;//Hero class abstract inheritance
 
 import java.util.Random;
 
-//Hero class abstract inheritance
 public class Hero extends Character {
     Random rand = new Random();
     protected Weapon weapon;

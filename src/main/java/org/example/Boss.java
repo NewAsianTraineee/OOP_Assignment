@@ -1,5 +1,4 @@
 package org.example;
-//Boss Class
 import java.util.Random;
 
 public class Boss extends Monster {

@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.Random;
 //Non-Boss monster class
 public class LowTierMonster extends Monster {

@@ -1,5 +1,4 @@
-package org.example;
-//Big papa class / Superclass, It is the main skeleton for subclasses.
+package org.example;//Big papa class / Superclass, It is the main skeleton for subclasses.
 public abstract class Character {
     private String name;
     private int maxHp;

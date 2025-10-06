@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 //The actual game mechanics
 public class Gameplay {
-    Hero hero;
+    org.example.Hero hero;
 
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();

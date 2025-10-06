@@ -1,5 +1,6 @@
 package org.example;
 
+
 // Main class that initializes the hero, enemies, input system, and starts the game loop.
 public class Main {
     public static void main(String[] args) throws InterruptedException {
