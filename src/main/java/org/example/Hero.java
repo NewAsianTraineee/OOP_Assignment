@@ -10,7 +10,7 @@ public class Hero extends Character {
     private int gold;
     // Constructor
     public Hero(String name, int maxHp, int damage, int level) {
-        super(name, maxHp, damage, level);
+        super(name, maxHp, damage, level); // Superkonstruktor
         this.exp = 0;
         this.gold = 0;
     }

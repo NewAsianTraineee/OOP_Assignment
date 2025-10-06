@@ -1,6 +1,7 @@
 package org.example;
 import java.util.Scanner;
 //Well you have already commented :D
+// Source - https://github.com/EduEdugrade/Java25/blob/main/1_oop/lecture_9/src/utils/InputReader.java
 public class InputReader {
     private Scanner scanner;
 

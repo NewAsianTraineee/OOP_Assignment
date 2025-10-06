@@ -77,14 +77,10 @@ public class Gameplay {
         boolean safeZone = rand.nextInt(100) < 10;
         if (safeZone) {
             System.out.println("You have entered a safe zone");
-            Thread.sleep(1500);
-            System.out.println("You feel tired...");
-            Thread.sleep(3000);
+            Thread.sleep(500);
             System.out.println("*Screeeech*");
             Thread.sleep(1000);
-            System.out.println(hero.getName() + " heard something...");
-            Thread.sleep(1500);
-            System.out.println("You feel safe and start heading towards out");
+            System.out.println("Leaving safe zone...");
             Thread.sleep(2000);
             System.out.println("Returning to main MENU!\n");
 
@@ -113,10 +109,11 @@ public class Gameplay {
                 currentEnemy.attack(hero);
                 hero.isDead();
 
+
+            } else {
                 if (hero.getHealth() <= 0) {
                     gameIsRunning = false;
                 }
-            } else {
                 break;
             }
         }
@@ -156,6 +153,8 @@ public class Gameplay {
            System.out.println("You chose: " + selected.getName());
            Thread.sleep(1500);
            System.out.println("Are you worthy?");
+           Thread.sleep(1500);
+           System.out.println("You have proen your worth!");
            Thread.sleep(1500);
            selected.purchase(hero);
            Thread.sleep(2000);
