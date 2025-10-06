@@ -3,7 +3,7 @@ package org.example;
 import java.util.Random;
 //Non-Boss monster class
 public class LowTierMonster extends Monster {
-
+//Fetch constructor > super constructor
     public LowTierMonster(String name, int maxHp, int damage, int level, int expReward, int goldReward) {
         super(name, maxHp, damage, level, expReward, goldReward);
     }

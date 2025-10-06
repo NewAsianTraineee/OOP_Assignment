@@ -1,5 +1,5 @@
 package org.example;
-
+//
 public class Weapon implements Purchasable {
     private String name;
     private int damage;

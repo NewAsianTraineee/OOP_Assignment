@@ -10,7 +10,7 @@ public class Hero extends Character {
     private int gold;
     // Constructor
     public Hero(String name, int maxHp, int damage, int level) {
-        super(name, maxHp, damage, level); // Superkonstruktor
+        super(name, maxHp, damage, level); //Super constructor
         this.exp = 0;
         this.gold = 0;
     }
@@ -98,7 +98,7 @@ public class Hero extends Character {
 
         int needExp = getLevel() * 100;
 
-        System.out.println("[" + getName() + "| HP: " + getHealth() + " | Damage: " +
+        System.out.println("[" + getName() + "| HP: " + getHealth() + "/" + getMaxHp() + " | Damage: " +
                 getDamage() + " | Level: " + getLevel() + " | Weapon: " + weapon.getName() +
                 " (+" + weapon.getDamage() + ") | Exp: " + exp + " | Gold: " + getGold() +
                 " | EXP: " + exp + "/" + needExp + "]");

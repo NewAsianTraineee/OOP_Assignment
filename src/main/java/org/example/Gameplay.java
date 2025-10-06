@@ -17,7 +17,11 @@ public class Gameplay {
     boolean gameIsRunning;
 
     public void gameMenu() {
+        asciiArt();
 
+        System.out.println("=========================");
+        System.out.println("====== Hero Arises ======");
+        System.out.println("=========================");
         System.out.println("===1. Battle ============");
         System.out.println("===2. Status ============");
         System.out.println("===3. Shop ==============");
@@ -28,18 +32,17 @@ public class Gameplay {
 
     public void start() throws InterruptedException {
         gameIsRunning = true;
-        System.out.println("=========================");
-        System.out.println("====== Hero Arises ======");
-        System.out.println("=========================");
 
         while (gameIsRunning) {
             gameMenu();
             int choice = reader.readInt("Options");
             handleChoice(choice);
+
         }
         reader.close();
         System.out.println("Game is closing...");
         Thread.sleep(200);
+
 
     }
 
@@ -61,6 +64,7 @@ public class Gameplay {
                 break;
             case 0:
                 gameIsRunning = false;
+                asciiArt();
                 break;
             default:
                 System.out.println("Invalid input.");
@@ -72,7 +76,7 @@ public class Gameplay {
         System.out.println("========  FIGHT  ========");
         System.out.println("=========================");
 
-        boolean isBossFight = rand.nextInt(100) < 30;
+        boolean isBossFight = rand.nextInt(100) < 10;
         Character currentEnemy;
         boolean safeZone = rand.nextInt(100) < 10;
         if (safeZone) {
@@ -100,14 +104,15 @@ public class Gameplay {
         for (int round = 1; round <= 15; round++) {
             if (hero.getHealth() > 0 && currentEnemy.getHealth() > 0) {
                 System.out.println("======= ROUND " + round + " =========");
-
+                Thread.sleep(400);
                 hero.attack(currentEnemy);
                 currentEnemy.isDead();
-
+                Thread.sleep(400);
                 if (currentEnemy.getHealth() <= 0) break;
-
+                Thread.sleep(400);
                 currentEnemy.attack(hero);
                 hero.isDead();
+                Thread.sleep(400);
 
 
             } else {
@@ -130,10 +135,10 @@ public class Gameplay {
     }
 // T
     public void option3() throws InterruptedException {
-        System.out.println("You have entered Hephaestus workshop...");
+        System.out.println("You have entered Hepatheus workshop...");
         Thread.sleep(2000);
         System.out.println("=========================");
-        System.out.println("======= Hephaestus ======");
+        System.out.println("======= Hepatheus ======");
         System.out.println("=========================");
         System.out.println("========= Items =========");
         Thread.sleep(2000);
@@ -154,7 +159,12 @@ public class Gameplay {
            Thread.sleep(1500);
            System.out.println("Are you worthy?");
            Thread.sleep(1500);
-           System.out.println("You have proen your worth!");
+           if(hero.getLevel() >= selected.getNeedLevel() && hero.getGold() >= selected.getPrice()){
+               System.out.println("You have proven your worth!");
+           }
+           else {
+               System.out.println("You have are not worth " + selected.getName());
+           }
            Thread.sleep(1500);
            selected.purchase(hero);
            Thread.sleep(2000);
@@ -181,10 +191,33 @@ public class Gameplay {
             else {
                 System.out.println("You are too low [Level: " + hero.getLevel() + "| Level: " + 10+"]");
                 Thread.sleep(2000);
+
                 System.out.println("Returning to MENU");
                 Thread.sleep(1500);
             }
 
         }
+    public void asciiArt() {
+        System.out.println("""
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠿⠋⠀⠀⠙⠛⢿⣿⣿⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⡿⠃⠀⠀⠀⠀⣀⡀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⢀⣠⣶⣿⠟⠋⠀⠀⢀⣠⣴⠞⠉⠁⠀⠀⠈⢻⣿⣿⣿⣝⡿⣿⣿⣿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠏⣠⣴⣿⠟⣋⣤⣶⣿⣿⡿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣷⣬⡙⠻⢿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⢃⣼⣿⣿⣿⣿⣿⣿⣟⣋⣁⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣶⣄⡉⠻⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣧⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣛⠉⠙⠛⠳⠶⣤⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣦⣈⠙⢿⣿⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⡝⢿⣿⣿⣿⣿⣿⣷⣄⠙⠻⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⡟⠉⢉⠉⠉⠻⣿⣿⣿⣿⣿⣿⠻⣶⡀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣎⠻⣿⣿⣿⣿⣿⣿⣷⣄⠈⢿⣿⣦⠀⠀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⠋⣿⣿⣿⣿⣷⠶⠋⠀⠀⢀⡈⢻⣿⣿⣿⣿⣦⠈⠛⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣦⠘⢿⣿⣿⣿⣿⣿⣿⣧⡀⠙⢿⣧⡀⠀⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣷⣾⡿⠛⠉⠁⠀⠀⠀⠀⠀⢀⣷⡀⣿⣿⣿⣿⢿⣷⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣧⡀⢻⣿⣿⣿⣿⣿⣿⣿⣄⠀⢻⣿⣆⠀⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠁⣿⣿⣿⣿⠀⢻⡆⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣷⠀⠹⣿⣿⣿⣿⣿⣿⣿⣧⡀⠹⣿⣆⠀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⠏⢠⣿⣿⣿⣿⠀⠈⠃⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠹⣿⣿⣿⣿⣿⣿⣿⣧⠀⠙⢿⡀⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⠃⢠⣿⣿⣿⡏⡞⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⢹⣿⣿⣿⣿⣿⣿⣿⣧⠀⠈⣧⠀
+        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⠇⣠⣿⣿⣿⠟⠀⠁⠀⠀⠀⣀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⢿⣿⣿⣿⣿⣿⣿⣿⣧⡀⢹⣇
+        ⠀⠀⠀⠀⠀⢀⣤⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⡏⢰⣿⣿⣿⣿⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠛
+        ⠀⠀⠀⠀⢠⡾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⠁⢸⣿⣿⣿⠛⠿⣿⣿⣿⣿⣛⣛⣛⠋⠉⠉⠉⠉⠛⠛⠛⠿⣿⣿⣿⣿⣿⣿⡇⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀
+        ⠀⠀⠀⢰⣿⠃⠀⠀⢀⣠⣤⣤⠴⠶⠂⠀⠀⠀⢹⣿⣿⣿⠀⢸⣿⣿⣿⣷⣄⡀⠉⠙⠻⠿⢿⣿⣿⣿⣶⣦⣄⡀⠀⠀⠀⠀⠉⠻⢿⣿⣿⡇⠀⢸⣿⣿⣿⣿⣷⢹⣿⣿⣇⠀
+        ⠀⠀⢠⣿⡇⠀⢀⣴⣿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠈⢻⣿⣿⡆⠸⣿⣿⣿⣿⣿⣿⣷⣶⣤⣤⣀⡈⠙⠛⠿⣿⣿⣿⣷⣤⣀⠀⠀⠀⠀
+""");
+    }
     }
 
