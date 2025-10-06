@@ -1,5 +1,5 @@
 package org.example;
-
+//Big papa class / Superclass, It is the main skeleton for subclasses.
 public abstract class Character {
     private String name;
     private int maxHp;
@@ -50,6 +50,7 @@ public abstract class Character {
     public void setLevel(int level) {
         this.level = level;
     }
+
 
     public abstract void attack(Character target);
     public abstract void takeDamage(int amount);

@@ -88,7 +88,6 @@ public class Hero extends Character {
     public void isDead() {
         if (getHealth() <= 0) {
             System.out.println(getName() + " has died!");
-            getMaxHp();
         }
 
     }

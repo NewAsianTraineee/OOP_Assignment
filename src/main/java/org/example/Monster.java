@@ -9,7 +9,7 @@ public abstract class Monster extends Character {
         this.expReward = expReward;
         this.goldReward = goldReward;
     }
-
+    // EXP method
     public int getExpReward() {
         return expReward;
     }
@@ -22,7 +22,8 @@ public abstract class Monster extends Character {
     public void takeDamage(int amount) {
         setHealth(getHealth() - amount);
     }
-// Fixa currentTarget
+
+    // Target Hero
     @Override
     public void isDead() {
         if (getHealth() <= 0) {
@@ -30,9 +31,4 @@ public abstract class Monster extends Character {
         }
     }
 
-    @Override
-    public void info() {
-        System.out.println("[" + getName() + " | HP: " + getHealth() + " | Damage: " + getDamage() +
-                " | EXP Reward: " + expReward + " | Gold Reward: " + goldReward + "]");
-    }
 }
